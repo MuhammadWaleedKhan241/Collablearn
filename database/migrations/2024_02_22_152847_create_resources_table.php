@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('resources', function (Blueprint $table) {
             $table->id();
-            $table->bigIntegerigInteger('SessionId');
+            $table->unsignedBigInteger('SessionId');
             $table->string('File_Title');
             $table->string('File_Name');
             $table->string('Path');
-            $table->timestamp('added_on');
-            $table->timestamp();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
 
             $table->foreign('SessionId')->references('id')->on('session')->onDelete('cascade');
         });

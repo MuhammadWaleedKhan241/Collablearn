@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('Session_Id');
             $table->unsignedBigInteger('Student_Id');
-            $table->date('Enroll_On');
+            $table->timestamp('Enroll_On');
             
-            // $table.foreign('Student_Id').references('id').on('users').onDelete('cascade ');
-            // $table.foreign('Session_Id').references('id').on('session').onDelete('cascade');
+            $table->foreign('Student_Id')->references('id')->on('users')->onDelete('cascade ');
+            $table->foreign('Session_Id')->references('id')->on('session')->onDelete('cascade');
 
         });
     }
